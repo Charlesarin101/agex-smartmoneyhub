@@ -5,223 +5,250 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AGEx Smart Money Hub — Structure over shortcuts</title>
   <meta name="description" content="A stewardship-first environment built for people who understand that real financial growth comes from discipline, not hype." />
-  <link rel="stylesheet" :root{
-  --bg0:#020c0a;
-  --bg1:#04110e;
-  --bg2:#061a16;
-  --card:rgba(255,255,255,.035);
-  --card2:rgba(255,255,255,.02);
-  --text:#e9f6f1;
-  --muted:#b9c9c3;
-  --gold:#f5c76a;
-  --gold2:rgba(245,199,106,.18);
-  --line:rgba(255,255,255,.08);
-  --line2:rgba(245,199,106,.22);
-  --shadow: 0 18px 50px rgba(0,0,0,.45);
-}
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(1200px 600px at 50% -10%, rgba(245,199,106,.10), rgba(0,0,0,0) 55%),
-    radial-gradient(900px 500px at 20% 10%, rgba(0,255,160,.06), rgba(0,0,0,0) 60%),
-    linear-gradient(180deg,var(--bg0),var(--bg2));
-}
+  <style>
+    :root{
+      --bg0:#020c0a;
+      --bg1:#04110e;
+      --bg2:#061a16;
+      --text:#e9f6f1;
+      --muted:#b9c9c3;
+      --gold:#f5c76a;
+      --gold2:rgba(245,199,106,.18);
+      --line:rgba(255,255,255,.08);
+      --line2:rgba(245,199,106,.22);
+      --cardA:rgba(255,255,255,.035);
+      --cardB:rgba(255,255,255,.02);
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius:20px;
+    }
 
-a{color:inherit;text-decoration:none}
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(245,199,106,.10), rgba(0,0,0,0) 55%),
+        radial-gradient(900px 520px at 20% 10%, rgba(0,255,160,.06), rgba(0,0,0,0) 60%),
+        linear-gradient(180deg,var(--bg0),var(--bg2));
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
 
-.nav{
-  position:sticky;top:0;z-index:50;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 18px;
-  background:rgba(2,12,10,.72);
-  backdrop-filter: blur(12px);
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.brand{display:flex;gap:12px;align-items:center}
-.logo-dot{
-  width:36px;height:36px;border-radius:50%;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(245,199,106,1), rgba(245,199,106,.15) 55%, rgba(245,199,106,0) 72%),
-    radial-gradient(circle at 55% 60%, rgba(0,255,180,.10), rgba(0,0,0,0) 60%);
-  border:1px solid var(--line2);
-  box-shadow: 0 0 0 6px rgba(245,199,106,.06);
-}
-.brand-top{font-weight:800;letter-spacing:.7px}
-.brand-sub{font-size:12px;color:var(--muted);margin-top:2px}
+    /* NAV */
+    .nav{
+      position:sticky;top:0;z-index:50;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 18px;
+      background:rgba(2,12,10,.72);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo-dot{
+      width:36px;height:36px;border-radius:50%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(245,199,106,1), rgba(245,199,106,.15) 55%, rgba(245,199,106,0) 72%),
+        radial-gradient(circle at 55% 60%, rgba(0,255,180,.10), rgba(0,0,0,0) 60%);
+      border:1px solid var(--line2);
+      box-shadow: 0 0 0 6px rgba(245,199,106,.06);
+    }
+    .brand-top{font-weight:850;letter-spacing:.7px}
+    .brand-sub{font-size:12px;color:var(--muted);margin-top:2px}
 
-.hero{
-  padding:78px 0 44px;
-  position:relative;
-  overflow:hidden;
-}
-.hero::before{
-  content:"";
-  position:absolute;inset:-2px;
-  background:
-    radial-gradient(900px 520px at 50% 20%, rgba(245,199,106,.12), rgba(0,0,0,0) 60%),
-    radial-gradient(760px 520px at 80% 40%, rgba(0,255,160,.06), rgba(0,0,0,0) 60%);
-  pointer-events:none;
-}
-.hero::after{
-  content:"";
-  position:absolute;inset:0;
-  background:
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255,255,255,.03) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(circle at 50% 30%, rgba(0,0,0,.9), rgba(0,0,0,0) 65%);
-  opacity:.35;
-  pointer-events:none;
-}
-.hero-inner{position:relative;max-width:900px;margin:0 auto;text-align:center}
+    /* HERO */
+    .hero{padding:78px 0 44px;position:relative;overflow:hidden}
+    .hero::before{
+      content:"";position:absolute;inset:-2px;pointer-events:none;
+      background:
+        radial-gradient(980px 560px at 50% 20%, rgba(245,199,106,.12), rgba(0,0,0,0) 60%),
+        radial-gradient(760px 520px at 80% 40%, rgba(0,255,160,.06), rgba(0,0,0,0) 60%);
+    }
+    .hero::after{
+      content:"";position:absolute;inset:0;pointer-events:none;opacity:.33;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at 50% 30%, rgba(0,0,0,.9), rgba(0,0,0,0) 65%);
+    }
+    .hero-inner{position:relative;max-width:940px;margin:0 auto;text-align:center}
+    .kicker{
+      color:var(--gold);letter-spacing:.18em;text-transform:uppercase;
+      font-size:12px;margin-bottom:14px
+    }
+    h1{
+      font-size:46px;line-height:1.05;margin:0 0 14px;
+      letter-spacing:-.02em
+    }
+    h1 span{color:var(--gold)}
+    .lead{
+      color:var(--muted);font-size:18px;line-height:1.7;
+      margin:0 auto 18px;max-width:780px
+    }
 
-.kicker{
-  color:var(--gold);
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  font-size:12px;
-  margin-bottom:14px;
-}
-h1{
-  font-size:46px;
-  line-height:1.05;
-  margin:0 0 14px;
-  letter-spacing:-.02em;
-}
-h1 span{color:var(--gold)}
-.lead{
-  color:var(--muted);
-  font-size:18px;
-  line-height:1.65;
-  margin:0 auto 18px;
-  max-width:760px;
-}
+    /* BUTTONS */
+    .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:18px 0 16px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      border-radius:999px;padding:12px 18px;font-weight:780;
+      border:1px solid rgba(255,255,255,.12);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 10px 30px rgba(0,0,0,.25)}
+    .btn-primary{
+      background: linear-gradient(180deg, rgba(245,199,106,.98), rgba(245,199,106,.75));
+      color:#1a1204;border:1px solid rgba(245,199,106,.40);
+    }
+    .btn-secondary{background:transparent;border:1px solid var(--line2)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.12);padding:10px 14px}
 
-.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:18px 0 16px}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  border-radius:999px;
-  padding:12px 18px;
-  font-weight:750;
-  border:1px solid rgba(255,255,255,.12);
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-}
-.btn:hover{transform: translateY(-1px); box-shadow: 0 10px 30px rgba(0,0,0,.25)}
-.btn-primary{
-  background: linear-gradient(180deg, rgba(245,199,106,.98), rgba(245,199,106,.75));
-  color:#1a1204;
-  border:1px solid rgba(245,199,106,.40);
-}
-.btn-secondary{background:transparent;border:1px solid var(--line2)}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.12);padding:10px 14px}
-.btn-wide{width:100%}
+    .trust-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+    .trust-pill{
+      background: rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--muted);padding:8px 12px;border-radius:999px;font-size:12px
+    }
 
-.trust-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
-.trust-pill{
-  background: rgba(255,255,255,.02);
-  border:1px solid rgba(255,255,255,.10);
-  color:var(--muted);
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:12px
-}
+    /* SECTIONS */
+    .section{padding:70px 0;border-top:1px solid rgba(255,255,255,.06)}
+    .section.alt{background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0))}
+    h2{font-size:30px;margin:0 0 10px}
+    h3{margin:0 0 8px}
+    .text{color:var(--muted);font-size:16px;line-height:1.78}
+    .muted{color:var(--muted)}
+    .fineprint{color:var(--muted);font-size:12px;margin-top:10px}
 
-.section{padding:70px 0;border-top:1px solid rgba(255,255,255,.06)}
-.section.alt{
-  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-}
-h2{font-size:30px;margin:0 0 10px}
-.text{color:var(--muted);font-size:16px;line-height:1.75}
-.muted{color:var(--muted)}
-.fineprint{color:var(--muted);font-size:12px;margin-top:10px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+    .card{
+      background: linear-gradient(180deg, var(--cardA), var(--cardB));
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: var(--radius);
+      padding:18px;box-shadow: var(--shadow);
+      position:relative;overflow:hidden;
+    }
+    .card::after{
+      content:"";position:absolute;inset:-40%;
+      background: radial-gradient(circle at 30% 30%, rgba(245,199,106,.12), rgba(0,0,0,0) 55%);
+      transform: rotate(12deg);opacity:.35;pointer-events:none;
+    }
+    .card > *{position:relative}
+    .card p{color:var(--muted);line-height:1.65;margin:0}
 
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
-.card{
-  background: linear-gradient(180deg, var(--card), var(--card2));
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius:18px;
-  padding:18px;
-  box-shadow: var(--shadow);
-}
-.card p{color:var(--muted);line-height:1.65;margin:0}
+    .steps{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:14px}
+    .steps li{
+      display:flex;gap:14px;align-items:flex-start;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.09);
+      border-radius: var(--radius);
+      padding:18px;box-shadow: var(--shadow);
+    }
+    .step-num{
+      width:36px;height:36px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      background: rgba(245,199,106,.14);
+      border:1px solid var(--line2);
+      color:var(--gold);font-weight:900;flex:0 0 auto;
+    }
 
-.steps{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:14px}
-.steps li{
-  display:flex;gap:14px;align-items:flex-start;
-  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:18px;
-  padding:18px;
-  box-shadow: var(--shadow);
-}
-.step-num{
-  width:36px;height:36px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  background: rgba(245,199,106,.14);
-  border:1px solid var(--line2);
-  color:var(--gold);
-  font-weight:900;
-}
+    .split{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start}
+    .callout{
+      background: rgba(245,199,106,.07);
+      border:1px solid var(--line2);
+      border-radius: var(--radius);
+      padding:18px;box-shadow: var(--shadow);
+    }
+    .callout ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    .callout li{margin:6px 0}
 
-.split{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start}
-.callout{
-  background: rgba(245,199,106,.07);
-  border:1px solid var(--line2);
-  border-radius:18px;
-  padding:18px;
-  box-shadow: var(--shadow);
-}
-.callout ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
-.callout li{margin:6px 0}
+    .apply-box{
+      max-width:760px;margin:20px auto 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: calc(var(--radius) + 2px);
+      padding:20px;box-shadow: var(--shadow);
+    }
+    .badge{
+      display:inline-block;border:1px solid var(--line2);color:var(--gold);
+      padding:6px 10px;border-radius:999px;font-size:12px;margin-bottom:10px
+    }
+    .apply-grid{display:grid;grid-template-columns:1fr 320px;gap:14px;align-items:center}
+    .btn-wide{width:100%}
 
-.apply-box{
-  max-width:700px;margin:20px auto 0;
-  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius:20px;
-  padding:20px;
-  box-shadow: var(--shadow);
-}
-.badge{
-  display:inline-block;
-  border:1px solid var(--line2);
-  color:var(--gold);
-  padding:6px 10px;
-  border-radius:999px;
-  font-size:12px;
-  margin-bottom:10px;
-}
+    /* FAQ */
+    .faq details{
+      background: rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:16px;padding:12px 14px;margin-top:10px
+    }
+    .faq summary{cursor:pointer;font-weight:780}
+    .faq p{margin-top:10px;color:var(--muted);line-height:1.7}
 
-.faq details{
-  background: rgba(255,255,255,.02);
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:16px;
-  padding:12px 14px;
-  margin-top:10px;
-}
-.faq summary{cursor:pointer;font-weight:750}
-.faq p{margin-top:10px;color:var(--muted);line-height:1.7}
+    /* FOOTER */
+    .footer{padding:22px 0;border-top:1px solid rgba(255,255,255,.06)}
+    .footer-inner{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
-.footer{padding:22px 0;border-top:1px solid rgba(255,255,255,.06)}
-.footer-inner{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    /* MODAL (Verification Gateway) */
+    .modal-backdrop{
+      position:fixed;inset:0;background:rgba(0,0,0,.62);
+      display:none;align-items:center;justify-content:center;z-index:120;
+      padding:20px;
+    }
+    .modal{
+      width:min(860px, 100%);
+      background: linear-gradient(180deg, rgba(6,26,22,.92), rgba(4,17,14,.92));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:24px;
+      box-shadow: 0 28px 90px rgba(0,0,0,.65);
+      overflow:hidden;
+    }
+    .modal-top{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.07);
+      background: rgba(2,12,10,.55);
+    }
+    .modal-body{padding:18px}
+    .modal-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    .modal-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:18px;
+      padding:16px;
+    }
+    .xbtn{
+      width:40px;height:40px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:transparent;color:var(--text);
+      cursor:pointer;font-size:18px;font-weight:800;
+    }
+    .xbtn:hover{border-color:rgba(245,199,106,.35)}
+    .small{font-size:13px;color:var(--muted);line-height:1.6}
 
-@media (max-width: 860px){
-  h1{font-size:36px}
-  .cards{grid-template-columns:1fr}
-  .split{grid-template-columns:1fr}
-}
-" />
-
+    /* RESPONSIVE */
+    @media (max-width: 920px){
+      h1{font-size:38px}
+      .cards{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
+      .apply-grid{grid-template-columns:1fr}
+      .modal-grid{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 
 <body>
+  <!-- ====== CONFIG (EDIT THESE 2 LINES) ====== -->
+  <script>
+    // 1) Your real web/app verification/payment URL (required):
+    const AGEX_WEB_VERIFY_URL = "PASTE_YOUR_APP_OR_WEB_VERIFY_URL_HERE";
+
+    // 2) Optional deep link (if you have a mobile app scheme). Example: "agex://verify"
+    const AGEX_APP_DEEPLINK = "agex://verify";
+  </script>
+
   <header class="nav">
-    <div class="brand">
+    <div class="brand" aria-label="AGEx Smart Money Hub">
       <div class="logo-dot" aria-hidden="true"></div>
       <div>
         <div class="brand-top">AGEx</div>
@@ -234,7 +261,7 @@ h2{font-size:30px;margin:0 0 10px}
   <main>
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-inner">
+      <div class="hero-inner container">
         <p class="kicker">A stewardship-first environment</p>
         <h1>Most platforms sell dreams.<br><span>We build foundations.</span></h1>
         <p class="lead">
@@ -242,7 +269,7 @@ h2{font-size:30px;margin:0 0 10px}
         </p>
 
         <div class="cta-row">
-          <a class="btn btn-primary" href="#apply">Start $1 Verification</a>
+          <button class="btn btn-primary" data-open-verify>Start $1 Verification</button>
           <a class="btn btn-secondary" href="#how">See how it works</a>
         </div>
 
@@ -290,21 +317,21 @@ h2{font-size:30px;margin:0 0 10px}
             <div class="step-num">1</div>
             <div>
               <h3>Learn</h3>
-              <p>Understand the core principles: cashflow control, saving discipline, risk awareness, and stewardship habits.</p>
+              <p class="text">Understand the core principles: cashflow control, saving discipline, risk awareness, and stewardship habits.</p>
             </div>
           </li>
           <li>
             <div class="step-num">2</div>
             <div>
               <h3>Apply</h3>
-              <p>Practice through immediate actions. No theory-only learning.</p>
+              <p class="text">Practice through immediate actions. No theory-only learning.</p>
             </div>
           </li>
           <li>
             <div class="step-num">3</div>
             <div>
               <h3>Verify</h3>
-              <p>Verify your progress and earn Skill Points through consistency.</p>
+              <p class="text">Verify your progress and earn Skill Points through consistency.</p>
             </div>
           </li>
         </ol>
@@ -344,18 +371,19 @@ h2{font-size:30px;margin:0 0 10px}
         </p>
 
         <div class="apply-box">
-          <div>
-            <div class="badge">First 50 only</div>
-            <h3>Your first step</h3>
-            <p class="muted">
-              Click below to verify and enter. If the path resonates, the gate is open.
-            </p>
-          </div>
+          <div class="apply-grid">
+            <div>
+              <div class="badge">First 50 only</div>
+              <h3>Your first step</h3>
+              <p class="muted" style="margin:0">
+                Click below to verify and enter. If the path resonates, the gate is open.
+              </p>
+            </div>
 
-          <!-- Replace the href with your real checkout/verification link -->
-          <a class="btn btn-primary btn-wide" href="https://rb.gy/1o2wdo" target="_blank" rel="noopener">
-            Start Verification
-          </a>
+            <button class="btn btn-primary btn-wide" data-open-verify>
+              Start Verification
+            </button>
+          </div>
 
           <p class="fineprint">
             By continuing, you agree to our community standards of discipline, respect, and stewardship.
@@ -401,8 +429,103 @@ h2{font-size:30px;margin:0 0 10px}
     </footer>
   </main>
 
+  <!-- VERIFICATION MODAL -->
+  <div class="modal-backdrop" id="verifyModal" role="dialog" aria-modal="true" aria-label="AGEx Verification Gateway">
+    <div class="modal">
+      <div class="modal-top">
+        <div class="brand">
+          <div class="logo-dot" aria-hidden="true"></div>
+          <div>
+            <div class="brand-top">AGEx</div>
+            <div class="brand-sub">Verification Gateway</div>
+          </div>
+        </div>
+        <button class="xbtn" id="closeModal" aria-label="Close">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-grid">
+          <div class="modal-card">
+            <h3 style="margin:0 0 8px">Proceed to verification</h3>
+            <p class="small">
+              On mobile, we’ll attempt to open the app first. If the app is not installed, you’ll be redirected to the web verification flow.
+            </p>
+
+            <div class="cta-row" style="justify-content:flex-start;margin:14px 0 0">
+              <a class="btn btn-primary" id="continueVerify" href="#" rel="noopener">Continue</a>
+              <button class="btn btn-secondary" id="copyLink" type="button">Copy link</button>
+            </div>
+
+            <p class="small" style="margin-top:10px">
+              If nothing happens, tap <b>Continue</b> again.
+            </p>
+          </div>
+
+          <div class="modal-card">
+            <h3 style="margin:0 0 8px">After you verify</h3>
+            <p class="small">
+              Return here and begin Module 1 inside the Smart Money Academy. Steward’s Lodge invitations are issued by verified consistency.
+            </p>
+            <p class="small" style="margin:10px 0 0">
+              <b>Reminder:</b> $1 is not a fee — it’s a commitment filter.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Year
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Modal controls
+    const modal = document.getElementById("verifyModal");
+    const openers = document.querySelectorAll("[data-open-verify]");
+    const closeBtn = document.getElementById("closeModal");
+    const continueBtn = document.getElementById("continueVerify");
+    const copyBtn = document.getElementById("copyLink");
+
+    function openModal(){
+      // Guard: if you forget to paste the URL, we stop here.
+      if (!AGEX_WEB_VERIFY_URL || AGEX_WEB_VERIFY_URL.includes("PASTE_")) {
+        alert("Paste your real verification/payment URL into AGEX_WEB_VERIFY_URL at the top of index.html");
+        return;
+      }
+      continueBtn.href = AGEX_WEB_VERIFY_URL;
+      modal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+
+      // Auto-attempt deep link on mobile (then fallback to web)
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobile && AGEX_APP_DEEPLINK && AGEX_APP_DEEPLINK.startsWith("agex://")) {
+        const start = Date.now();
+        window.location.href = AGEX_APP_DEEPLINK;
+        setTimeout(() => {
+          // If app didn't open quickly, fallback to web
+          if (Date.now() - start < 1200) window.location.href = AGEX_WEB_VERIFY_URL;
+        }, 900);
+      }
+    }
+    function closeModal(){
+      modal.style.display = "none";
+      document.body.style.overflow = "";
+    }
+
+    openers.forEach(b => b.addEventListener("click", openModal));
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+    copyBtn.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(AGEX_WEB_VERIFY_URL);
+        copyBtn.textContent = "Copied ✓";
+        setTimeout(()=>copyBtn.textContent="Copy link", 1200);
+      }catch{
+        alert("Copy failed. Long-press the Continue button link instead.");
+      }
+    });
   </script>
 </body>
 </html>
