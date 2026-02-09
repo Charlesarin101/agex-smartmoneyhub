@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AGEx — Verification</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta http-equiv="refresh" content="10;url=/" />
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">
+      <div class="logo-dot" aria-hidden="true"></div>
+      <div>
+        <div class="brand-top">AGEx</div>
+        <div class="brand-sub">Smart Money Hub</div>
+      </div>
+    </div>
+    <a class="btn btn-ghost" href="/">Back</a>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container" style="max-width:720px;text-align:center">
+        <p class="kicker">Verification Gateway</p>
+        <h1>Redirecting you to verification…</h1>
+        <p class="text">
+          If nothing happens, tap the button below.
+        </p>
+
+        <div class="cta-row" style="margin-top:18px">
+          <!-- ✅ Replace VERIFICATION_URL with your real in-app/web verification link -->
+          <a class="btn btn-primary" id="verifyBtn" href="VERIFICATION_URL" rel="noopener">
+            Continue to Verification
+          </a>
+          <a class="btn btn-secondary" href="/success.html">
+            I’ve Completed Verification
+          </a>
+        </div>
+
+        <p class="fineprint" style="margin-top:14px">
+          If you’re on mobile and the app is installed, verification will open in-app.\n
+          If not installed, you’ll be taken to the web verification page.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // ✅ Replace these when your app/web URLs are ready
+    const APP_DEEPLINK = "agex://verify";                 // optional
+    const WEB_VERIFY   = "VERIFICATION_URL";             // required
+    const FALLBACK_MS  = 900;
+
+    // Try deep link first (mobile). Then fallback to web.
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // Attempt deep link
+      window.location.href = APP_DEEPLINK;
+
+      // Fallback to web verification
+      setTimeout(() => {
+        window.location.href = WEB_VERIFY;
+      }, FALLBACK_MS);
+    } else {
+      // Desktop goes straight to web verification
+      window.location.href = WEB_VERIFY;
+    }
+
+    // Ensure button points to WEB_VERIFY if user taps
+    const btn = document.getElementById("verifyBtn");
+    btn.href = WEB_VERIFY;
+  </script>
+</body>
+</html>
